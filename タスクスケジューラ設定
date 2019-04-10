@@ -1,0 +1,8 @@
+プログラム/スクリプト：
+%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe
+
+引数の追加：
+-windowstyle hidden -ExecutionPolicy RemoteSigned -File <powershellファイル名（絶対パスで記載）>
+
+設定：
+最上位の権限で実行するをチェック
