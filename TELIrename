@@ -6,14 +6,13 @@ while(1){
         $results = (Get-ChildItem $DIR -include *<対象にしたいファイル名>*.<拡張子> -Recurse)
         if ($results.Length -ne 0){
             foreach($result in $results){
-                $Bname = $result.Name
+                $Bname = $result.DirectoryName + "\" + $result.Name
                 $result_path_name = split-path $result.DirectoryName -Leaf
-                
+                $Aname = $result.DirectoryName + "\" + $result_path_name + $result.Name
                 ♯フォルダ名と元のファイルのファイル名を結合した文字列を作る。
                 
-                $Aname = $result_path_name + $Bname
-                ♯リネームする
-                Get-ChildItem $result | Rename-Item -NewName { $_.name -replace $Bname, $Aname}
+                ♯リネームする。Rename-ItemからMove-Itemへ変更。
+                Move-Item $Bname $Aname
             }
         }else{
         }
